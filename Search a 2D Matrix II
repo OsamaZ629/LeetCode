@@ -1,0 +1,23 @@
+class Solution {
+    public boolean searchMatrix(int[][] mat, int target) {
+        for (int i = 0; i < mat.length; i++){
+            if (binSearch(mat[i], target)) return true;
+        }
+        return false;
+    }
+    public boolean binSearch(int[] mat, int target) {
+        // binary search rows.
+        int fir = 0, sec = mat.length - 1, mpoint = (fir + sec) / 2;
+        while (fir <= sec){
+            if (target == mat[mpoint]) return true;
+            else if (target > mat[mpoint]){
+                fir = mpoint+1;
+                mpoint = (fir + sec) / 2;
+            }else {
+                sec = mpoint-1;
+                mpoint = (fir + sec) / 2;
+            }
+        }
+        return false;
+    }
+}
