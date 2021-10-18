@@ -21,3 +21,19 @@ class Solution {
         return false;
     }
 }
+
+
+// Another more efficent solution after some search.  
+
+class Solution {
+    public boolean searchMatrix(int[][] mat, int target) {
+        if (mat.length == 0 || mat[0].length == 0) return false;
+        int row = 0, col = mat[0].length-1;
+        while(row  < mat.length && col >=0){
+            if (mat[row][col] == target) return true;
+            else if (target < mat[row][col]) col--;
+            else row++;
+        }
+        return false;
+    }
+}
